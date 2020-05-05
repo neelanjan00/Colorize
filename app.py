@@ -3,10 +3,15 @@ import numpy as np
 import cv2, base64
 import io
 from PIL import Image
+import subprocess
+import os
 
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+op = subprocess.run(['bash','down.sh'],check=True,stdout=subprocess.PIPE).stdout.decode('utf-8')
+print(op)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -70,4 +75,7 @@ def base():
 
 if __name__ == '__main__':
     app.secret_key = 'qwertyuiop1234567890'
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 33507))
+    print(port)
+    app.run(debug=True,host='0.0.0.0',port=port)
+    print("APP IS RUNNING")
