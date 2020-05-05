@@ -4,6 +4,7 @@ import cv2, base64
 import io
 from PIL import Image
 import subprocess
+import os
 
 app = Flask(__name__)
 
@@ -74,4 +75,7 @@ def base():
 
 if __name__ == '__main__':
     app.secret_key = 'qwertyuiop1234567890'
-    app.run(debug=True,port=33507)
+    port = int(os.environ.get('PORT', 33507))
+    print(port)
+    app.run(debug=True,host='0.0.0.0',port=port)
+    print("APP IS RUNNING")
