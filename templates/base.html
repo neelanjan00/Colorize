@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorize</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/stylesheets/fullpage.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    h1{
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 700;
+    }
+
+    h5{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-weight: 400;
+    }
+
+    div.overlay{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.479);
+        height: 585px;
+        border-radius: 20px;
+    }
+
+    #linkedin{
+        background-color: rgb(221, 221, 221);
+    }
+
+    #linkedin:hover{
+        color: white;
+        background-color: black;
+    }
+
+    .InteractionHeadings{
+        position: absolute;
+        top: 0;
+        left: 1;
+    }
+
+    #textbox1, #textbox2, #textbox3, #textbox4{
+        animation: fadeInAnimation ease 3s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+    }
+
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        div.overlay {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .InteractionHeadings{
+            position: absolute;
+            top: 20px;
+            left: 1;
+            padding: 15px;
+        }
+
+        #textbox2{
+            padding: 20px;
+        }
+
+        #lastSection{
+            padding-bottom: 30px;
+        }
+    }
+</style>
+<body>
+    <div id="fullpage">
+        <div class="section" id="0" style="background-image: url('../static/images/bg.png'); background-size:cover">
+            <div class="container" id="textbox1">
+                <h1 style="font-size: 70px; color: white; text-shadow: -1px 0px 10px rgb(94, 94, 94);" class="pt-4">COLORIZE</h1>
+                <h5 style="font-size: 25px; color: black; text-shadow: -1px 0px 10px rgb(202, 202, 202);">An AI approach to color black and white images.</h5>
+            </div>
+        </div>
+        <div class="section" id="1" style="background-image: url('../static/images/bg1.png'); background-size:cover">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-6 px-4" id="textbox2">
+                        <h1 class="pb-4" style="font-size: 50px; color: black;">Abstract</h1>
+                        <h5 style="font-size: 25px; color: white; text-shadow: -1px 0px 10px rgb(85, 85, 85);">
+                            Colorize is a computer vision algorithm which is implemented as a feed-forward pass in a CNN at test time, that has been trained on a million images from the Imagenet dataset. The algorithm is able to fill vibrant and realistic colors to the black and white images to recreate a plausible colorized image. 
+                            <br><br><a id="paperlink" style="text-decoration: none; color: white;" href="https://richzhang.github.io/colorization/">Based on the 2016 research paper of Zhang et al.</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="2" style="background-image: url('../static/images/bg2.jpg'); background-size:cover;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="overlay">
+                            <h1 class="InteractionHeadings">Interactive Model</h1>
+                            <form action="/" method="post" class="col-12" enctype="multipart/form-data">
+                                <div class="custom-file col-12">
+                                    <input type="file" class="custom-file-input" name="InputImg" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Upload jpg/jpeg/png Image</label>
+                                </div>
+                                <center><button class="btn btn-primary mt-3" type="submit">Submit</button></center>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="overlay">
+                            <h1 class="InteractionHeadings">Output Image</h1>
+                            {% if img %}
+                                <img src="data:image/jpeg;base64,{{img}}" class="img-fluid" style="max-height: 505px;"/>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="3" style="background-image: url('../static/images/bg3.png'); background-size:cover;">
+            <div class="container" id="lastSection">
+                <div class="row">
+                    <div class="col-md-6 col-12 mb-4 mb-md-0" id="textbox3">
+                        <h1>About</h1>
+                        <h5>This project is made by Neelanjan Manna, a fellow Machine Learning enthusiast currently enrolled in Bachelor of Technology course at KIIT University.</h5>
+                        <a href="https://linkedin.com/in/neelanjan00/" target="blank"><button class="btn" id="linkedin" style="border: 1px solid black;">My Linkedin</button></a>
+                        <a href="https://github.com/neelanjan00/" target="blank"><button class="btn ml-3" id="linkedin" style="border: 1px solid black;">My Github</button></a>
+                    </div>
+                    <div class="col-md-6 col-12" id="textbox4">
+                        <h1>References</h1>
+                        <h5>
+                            <a href="https://richzhang.github.io/colorization/" style="color: black;">1. Colorful Image Colorization by Zhang et al.</a><br>
+                            <a href="https://towardsdatascience.com/colorizing-old-b-w-photos-and-videos-with-the-help-of-ai-76ba086f15ec" style="color: black;">2. Colorizing Old B&W Photos and Videos With the Help of AI by Marcelo Rovai.</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/scripts/fullpage.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script>
+        var fullpage_api = new fullpage('#fullpage', {
+            autoScrolling: true,
+            scrollHorizontally: true,
+            verticallyCentered: true,
+            navigation: true,
+            responsiveWidth: 767,
+            anchors: ['section1', 'section2', 'section3', 'section4'],
+
+            onLeave: function(origin, destination, direction){
+                if(destination.index === 1)
+                    $("#fp-nav").find("span").css("background", "#fff");
+                else 
+                    $("#fp-nav").find("span").css("background", "black");
+            },
+
+            afterLoad: function(origin, destination, direction){
+                if(destination.index === 0)
+                    document.getElementById('textbox1').style.animationPlayState = 'running';
+                if(destination.index === 1)
+                    document.getElementById('textbox2').style.animationPlayState = 'running';
+                if(destination.index === 3) {
+                    document.getElementById('textbox3').style.animationPlayState = 'running';
+                    document.getElementById('textbox4').style.animationPlayState = 'running';
+                }
+            }
+        });
+    </script>
+    {% if check == 1 %}
+        <script>
+            fullpage_api.silentMoveTo(3);
+        </script>
+    {% endif %}
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+
+</html>
