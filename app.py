@@ -3,10 +3,14 @@ import numpy as np
 import cv2, base64
 import io
 from PIL import Image
+import subprocess
 
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+op = subprocess.run(['bash','down.sh'],check=True,stdout=subprocess.PIPE).stdout.decode('utf-8')
+print(op)
 
 def allowed_file(filename):
     return '.' in filename and \
