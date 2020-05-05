@@ -70,4 +70,4 @@ def base():
 
 if __name__ == '__main__':
     app.secret_key = 'qwertyuiop1234567890'
-    app.run(debug=True, port=33507)
+    app.run(debug=True)
