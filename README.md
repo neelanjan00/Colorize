@@ -28,7 +28,7 @@ python app.py
 
 👤 **Neelanjan Manna**
 
-* Website: neelanjanmanna.ml
+* Website: https://neelanjanmanna.ml/
 * Twitter: [@NeelanjanManna](https://twitter.com/NeelanjanManna)
 * Github: [@neelanjan00](https://github.com/neelanjan00)
 * LinkedIn: [@neelanjan00](https://linkedin.com/in/neelanjan00)
@@ -36,6 +36,3 @@ python app.py
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
